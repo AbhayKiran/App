@@ -14,8 +14,8 @@ from sklearn.pipeline import Pipeline
 st.title("House Price Prediction with Raw and Preprocessed Data")
 
 # Step 1: Load Datasets from URLs
-raw_data_path = "https://raw.githubusercontent.com/amithisnew/FDS_VA/refs/heads/main/raw_data_dementia.csv"
-preprocessed_data_path = "https://raw.githubusercontent.com/amithisnew/FDS_VA/refs/heads/main/preprocessed_data_dementia.csv"
+raw_data_path = "https://raw.githubusercontent.com/AbhayKiran/App/refs/heads/main/raw_data.csv"
+preprocessed_data_path = "https://raw.githubusercontent.com/AbhayKiran/App/refs/heads/main/preprocessed_data.csv"
 
 st.sidebar.header("Data Selection")
 data_option = st.sidebar.radio("Choose Dataset to Load:", ["Raw Data", "Preprocessed Data"])
