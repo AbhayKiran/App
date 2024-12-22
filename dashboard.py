@@ -112,3 +112,41 @@ if 'Area' in df_cleaned.columns:
     st.header("Additional Visualization: Price vs Area")
     fig_area = px.scatter(df_cleaned, x='Area', y='Price', color='Location' if 'Location' in df_cleaned.columns else None, title="Price vs Area")
     st.plotly_chart(fig_area)
+
+# Step 8: Histogram for Train Data
+st.header("Histogram: Actual vs Predicted Prices (Train Data)")
+
+fig_train = go.Figure()
+
+# Add actual prices histogram
+fig_train.add_trace(
+    go.Histogram(
+        x=y_train,
+        name="Actual Prices",
+        opacity=0.6,
+        marker_color='blue'
+    )
+)
+
+# Add predicted prices histogram
+fig_train.add_trace(
+    go.Histogram(
+        x=y_pred_train,
+        name="Predicted Prices",
+        opacity=0.6,
+        marker_color='orange'
+    )
+)
+
+# Layout adjustments
+fig_train.update_layout(
+    barmode='overlay',
+    title="Actual vs Predicted Prices (Train Data)",
+    xaxis_title="Price",
+    yaxis_title="Frequency",
+    legend_title="Legend"
+)
+
+# Display histogram
+st.plotly_chart(fig_train)
+
