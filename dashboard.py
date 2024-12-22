@@ -104,8 +104,41 @@ fig_data.update_layout(yaxis_title="Frequency")
 st.plotly_chart(fig_data)
 
 st.header("Model Performance Metrics")
-st.write(f"Mean Squared Error (MSE): {mse_train:.2f}")
-st.write(f"R² Score: {r2_train:.2f}")
+import streamlit as st
+import plotly.graph_objects as go
+
+# Sample values for the metrics
+mse_raw = 25.6  # Replace with your actual value
+mse_train = 15.2  # Replace with your actual value
+r2_raw = 0.65  # Replace with your actual value
+r2_train = 0.85  # Replace with your actual value
+
+# Create the bar chart
+fig_metrics = go.Figure()
+fig_metrics.add_trace(go.Bar(
+    name='MSE',
+    x=['Raw Data', 'Preprocessed Data'],
+    y=[mse_raw, mse_train]
+))
+fig_metrics.add_trace(go.Bar(
+    name='R²',
+    x=['Raw Data', 'Preprocessed Data'],
+    y=[r2_raw, r2_train]
+))
+fig_metrics.update_layout(
+    barmode='group',
+    title="Model Performance Comparison",
+    xaxis_title="Data Type",
+    yaxis_title="Metrics",
+    legend_title="Metric Type"
+)
+
+# Streamlit app
+st.title("Model Metrics Comparison")
+
+# Display the Plotly figure
+st.plotly_chart(fig_metrics)
+
 
 # Additional Visualizations
 if 'Area' in df_cleaned.columns:
@@ -113,40 +146,4 @@ if 'Area' in df_cleaned.columns:
     fig_area = px.scatter(df_cleaned, x='Area', y='Price', color='Location' if 'Location' in df_cleaned.columns else None, title="Price vs Area")
     st.plotly_chart(fig_area)
 
-# Step 8: Histogram for Train Data
-st.header("Histogram: Actual vs Predicted Prices (Train Data)")
-
-fig_train = go.Figure()
-
-# Add actual prices histogram
-fig_train.add_trace(
-    go.Histogram(
-        x=y_train,
-        name="Actual Prices",
-        opacity=0.6,
-        marker_color='blue'
-    )
-)
-
-# Add predicted prices histogram
-fig_train.add_trace(
-    go.Histogram(
-        x=y_pred_train,
-        name="Predicted Prices",
-        opacity=0.6,
-        marker_color='orange'
-    )
-)
-
-# Layout adjustments
-fig_train.update_layout(
-    barmode='overlay',
-    title="Actual vs Predicted Prices (Train Data)",
-    xaxis_title="Price",
-    yaxis_title="Frequency",
-    legend_title="Legend"
-)
-
-# Display histogram
-st.plotly_chart(fig_train)
 
