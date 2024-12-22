@@ -108,10 +108,10 @@ import streamlit as st
 import plotly.graph_objects as go
 
 # Sample values for the metrics
-mse_raw = 25.6  # Replace with your actual value
-mse_train = 15.2  # Replace with your actual value
-r2_raw = 0.65  # Replace with your actual value
-r2_train = 0.85  # Replace with your actual value
+mse_raw = 11422163191.58  # Replace with your actual value
+mse_train = 11123913535.11  # Replace with your actual value
+r2_raw = 0.8458036  # Replace with your actual value
+r2_train = 0.847443  # Replace with your actual value
 
 # Create the bar chart
 fig_metrics = go.Figure()
